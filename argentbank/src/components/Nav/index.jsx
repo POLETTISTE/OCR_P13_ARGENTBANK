@@ -6,7 +6,7 @@ import SignIn from "../SignIn"
 const Nav = () => {
   return (
     <nav className="main-nav">
-      <Link to={`/index.html`} className="main-nav-logo">
+      <Link to={`/index`} className="main-nav-logo">
         <img
           src={logo}
           alt="Argent Bank Logo"

@@ -13,8 +13,8 @@ root.render(
     <BrowserRouter>
       <Routes>
         <Route exact path="/" element={<PageAccueil />}></Route>
-        <Route exact path="/index.html" element={<PageAccueil />}></Route>
-        <Route exact path="/sign-in.html" element={<PageSignIn />}></Route>
+        <Route exact path="/index" element={<PageAccueil />}></Route>
+        <Route exact path="/sign-in" element={<PageSignIn />}></Route>
         {/* <Route path="/user/:userId" element={<User />}></Route> */}
         {/* <Route path="*" element></Route> */}
       </Routes>

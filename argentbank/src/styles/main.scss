@@ -17,6 +17,10 @@ body {
   flex: 1;
 }
 
+a {
+  text-decoration: none;
+}
+
 .bg-dark {
   background-color: #12002b;
 }
@@ -167,6 +171,10 @@ body {
   border-color: #00bc77;
   background-color: #00bc77;
   color: #fff;
+  // & a {
+  //   text-decoration: none;
+  //   color: #2c3e50;
+  // }
 }
 
 .sign-in-content {

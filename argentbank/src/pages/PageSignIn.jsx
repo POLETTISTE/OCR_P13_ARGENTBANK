@@ -1,4 +1,6 @@
 import { Fragment } from "react"
+import { Link } from "react-router-dom"
+
 import Nav from "../components/Nav"
 import Footer from "../components/Footer"
 
@@ -23,12 +25,14 @@ const PageSignIn = () => {
               <input type="checkbox" id="remember-me" />
               <label for="remember-me">Remember me</label>
             </div>
-            {/* <!-- PLACEHOLDER DUE TO STATIC SITE --> */}
+            {/* <!-- PLACEHOLDER DUE TO STATIC SITE -->
             <a href="./user.html" className="sign-in-button">
               Sign In
-            </a>
+            </a> */}
             {/* <!-- SHOULD BE THE BUTTON BELOW --> */}
-            {/* <!-- <button class="sign-in-button">Sign In</button> --> */}
+            <Link to={`./user`}>
+              <button className="sign-in-button">Sign In</button>
+            </Link>
             {/* <!--  --> */}
           </form>
         </section>
