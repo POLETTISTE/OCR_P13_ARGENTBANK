@@ -3,7 +3,7 @@ import logo from "../../img/argentBankLogo.png"
 import { Link } from "react-router-dom"
 import SignIn from "../SignIn"
 
-const Header = () => {
+const Nav = () => {
   return (
     <nav className="main-nav">
       <Link to={`/`} className="main-nav-logo">
@@ -15,15 +15,12 @@ const Header = () => {
 
         <h1 className="sr-only">Argent Bank</h1>
       </Link>
+      {/* if current page is home */}
       <SignIn />
-      {/* <div>
-        <a className="main-nav-item" href="./sign-in.html">
-          <FontAwesomeIcon icon={faCircleUser} className="main-nav-item-icon" />
-          Sign In
-        </a>
-      </div> */}
+
+      {/* if current page is user */}
     </nav>
   )
 }
 
-export default Header
+export default Nav
