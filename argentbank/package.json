@@ -13,7 +13,7 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "sass": "sass --watch ./src/styles/main.scss:./public/css/style.css --style compressed",
+    "sass": "sass --watch ./src/styles/main.scss:./public/css/style.css ",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
@@ -43,6 +43,8 @@
     "eslint-plugin-import": "^2.26.0",
     "eslint-plugin-jsx-a11y": "^6.6.1",
     "eslint-plugin-react": "^7.31.11",
-    "eslint-plugin-react-hooks": "^4.6.0"
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "sass": "^1.56.1",
+    "webpack": "^5.75.0"
   }
 }
