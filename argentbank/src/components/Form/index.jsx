@@ -17,9 +17,7 @@ const Form = () => {
         <div className="input-wrapper">
           <label htmlFor="username">
             Username
-            <input
-              {...register("username", { required: true, maxLength: 20 })}
-            />
+            <input {...register("username", { required: true })} />
           </label>
         </div>
         <div className="input-wrapper">
