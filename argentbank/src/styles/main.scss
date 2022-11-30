@@ -15,10 +15,11 @@ body {
 
 .main {
   flex: 1;
+  height: 44rem;
 }
 
 a {
-  text-decoration: none;
+  text-decoration-color: #fff;
 }
 
 .bg-dark {
@@ -171,23 +172,21 @@ a {
   border-color: #00bc77;
   background-color: #00bc77;
   color: #fff;
-  // & a {
-  //   text-decoration: none;
-  //   color: #2c3e50;
-  // }
 }
 
 .sign-in-content {
+  position: relative;
+  top: 3rem;
   box-sizing: border-box;
   background-color: white;
   width: 300px;
   margin: 0 auto;
-  margin-top: 3rem;
+  // margin-top: 3rem;
   padding: 2rem;
 }
 
 .sign-in-icon {
-  font-size: 5rem;
+  font-size: 1rem;
 }
 
 .input-remember {

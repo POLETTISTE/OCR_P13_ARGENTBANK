@@ -7,8 +7,8 @@ import FeatureItem from "../FeatureItem"
 
 const Features = () => {
   return (
-    <section class="features">
-      <h2 class="sr-only">Features</h2>
+    <section className="features">
+      <h2 className="sr-only">Features</h2>
       {/* feater items */}
       <FeatureItem
         img={iconChat}
