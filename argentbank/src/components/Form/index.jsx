@@ -15,23 +15,23 @@ const Form = () => {
 
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className="input-wrapper">
-          <label htmlFor="Username">
+          <label htmlFor="username">
             Username
             <input
-              {...register("Username", { required: true, maxLength: 20 })}
+              {...register("username", { required: true, maxLength: 20 })}
             />
           </label>
         </div>
         <div className="input-wrapper">
-          <label htmlFor="Password">
+          <label htmlFor="password">
             Password
-            <input {...register("Password", { required: true })} />
+            <input {...register("password", { required: true })} />
           </label>
         </div>
         <div className="input-remember">
-          <label htmlFor="Remember me">
+          <label htmlFor="remember-me">
             Remember me
-            <input type="checkbox" {...register("Remember me")} />
+            <input type="checkbox" {...register("remember-me")} />
           </label>
         </div>
         <button type="submit" value="submit" className="sign-in-button">
