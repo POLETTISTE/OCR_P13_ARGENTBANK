@@ -13,7 +13,7 @@ root.render(
       <Routes>
         <Route exact path="/" element={<Accueil />}></Route>
         {/* <Route path="/user/:userId" element={<User />}></Route> */}
-        {/* <Route path="*" element={<Error />}></Route> */}
+        {/* <Route path="*" element></Route> */}
       </Routes>
     </BrowserRouter>
   </React.StrictMode>

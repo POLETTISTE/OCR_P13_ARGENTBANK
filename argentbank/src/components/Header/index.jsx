@@ -1,6 +1,7 @@
 import "./style.scss"
 import logo from "../../img/argentBankLogo.png"
 import { Link } from "react-router-dom"
+import SignIn from "../SignIn"
 
 const Header = () => {
   return (
@@ -14,12 +15,13 @@ const Header = () => {
 
         <h1 className="sr-only">Argent Bank</h1>
       </Link>
-      <div>
-        <a class="main-nav-item" href="./sign-in.html">
-          <i class="fa fa-user-circle"></i>
+      <SignIn />
+      {/* <div>
+        <a className="main-nav-item" href="./sign-in.html">
+          <FontAwesomeIcon icon={faCircleUser} className="main-nav-item-icon" />
           Sign In
         </a>
-      </div>
+      </div> */}
     </nav>
   )
 }
