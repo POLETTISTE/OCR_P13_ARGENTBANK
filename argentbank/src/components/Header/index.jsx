@@ -1,7 +1,12 @@
 import "./style.scss"
+import logo from "../../img/argentBankLogo.png"
 
 const Header = () => {
-  return <header>header</header>
+  return (
+    <header>
+      <img src={logo} alt="logo argentbank" />
+    </header>
+  )
 }
 
 export default Header
