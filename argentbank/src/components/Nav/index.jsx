@@ -1,12 +1,12 @@
 import "./style.scss"
 import logo from "../../img/argentBankLogo.png"
-import { Link } from "react-router-dom"
+import { NavLink } from "react-router-dom"
 import SignIn from "../SignIn"
 
 const Nav = () => {
   return (
     <nav className="main-nav">
-      <Link to={`/index`} className="main-nav-logo">
+      <NavLink to={`/index`} className="main-nav-logo">
         <img
           src={logo}
           alt="Argent Bank Logo"
@@ -14,7 +14,7 @@ const Nav = () => {
         />
 
         <h1 className="sr-only">Argent Bank</h1>
-      </Link>
+      </NavLink>
       {/* if current page is home */}
       <SignIn />
 

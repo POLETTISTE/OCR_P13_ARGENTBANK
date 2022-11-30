@@ -1,31 +1,42 @@
 import "./style.scss"
-import { Link } from "react-router-dom"
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faCircleUser } from "@fortawesome/free-solid-svg-icons"
+import { useForm } from "react-hook-form"
 
 const Form = () => {
+  const { register, handleSubmit } = useForm()
+  const onSubmit = (data) => console.log(data)
+
   return (
     <section className="sign-in-content">
       <FontAwesomeIcon icon={faCircleUser} className="sign-in-icon" />
       <h1>Sign In</h1>
 
-      <form>
-        <div class="input-wrapper">
-          <label for="username">Username</label>
-          <input type="text" id="username" />
+      <form onSubmit={handleSubmit(onSubmit)}>
+        <div className="input-wrapper">
+          <label htmlFor="Username">
+            Username
+            <input
+              {...register("Username", { required: true, maxLength: 20 })}
+            />
+          </label>
         </div>
-        <div class="input-wrapper">
-          <label for="password">Password</label>
-          <input type="password" id="password" />
+        <div className="input-wrapper">
+          <label htmlFor="Password">
+            Password
+            <input {...register("Password", { required: true })} />
+          </label>
         </div>
-        <div class="input-remember">
-          <input type="checkbox" id="remember-me" />
-          <label for="remember-me">Remember me</label>
+        <div className="input-remember">
+          <label htmlFor="Remember me">
+            Remember me
+            <input type="checkbox" {...register("Remember me")} />
+          </label>
         </div>
-        <Link to={`./user`}>
-          <button className="sign-in-button">Sign In</button>
-        </Link>
+        <button type="submit" value="submit" className="sign-in-button">
+          Sign In
+        </button>
       </form>
     </section>
   )
