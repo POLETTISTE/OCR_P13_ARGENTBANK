@@ -10,6 +10,8 @@ import PageSignIn from "./pages/PageSignIn"
 const root = ReactDOM.createRoot(document.getElementById("root"))
 root.render(
   <React.StrictMode>
+    {/* nav */}
+    {/* main */}
     <BrowserRouter>
       <Routes>
         <Route exact path="/" element={<PageAccueil />}></Route>
@@ -19,5 +21,7 @@ root.render(
         {/* <Route path="*" element></Route> */}
       </Routes>
     </BrowserRouter>
+    {/* main */}
+    {/* footer */}
   </React.StrictMode>
 )
