@@ -9,7 +9,6 @@ const Features = () => {
   return (
     <section className="features">
       <h2 className="sr-only">Features</h2>
-      {/* feater items */}
       <FeatureItem
         img={iconChat}
         title="You are our #1 priority"

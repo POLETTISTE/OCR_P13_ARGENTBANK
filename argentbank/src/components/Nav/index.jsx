@@ -19,6 +19,7 @@ const Nav = () => {
       <SignIn />
 
       {/* if current page is user */}
+      {/* <SignOut /> */}
     </nav>
   )
 }
