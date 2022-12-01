@@ -7,7 +7,6 @@ import { useForm } from "react-hook-form"
 const Form = () => {
   const { register, handleSubmit } = useForm()
   const onSubmit = (data) => console.log(data)
-
   return (
     <section className="sign-in-content">
       <FontAwesomeIcon icon={faCircleUser} className="sign-in-icon" />
