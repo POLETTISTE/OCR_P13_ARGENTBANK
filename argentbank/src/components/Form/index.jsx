@@ -3,10 +3,21 @@ import "./style.scss"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faCircleUser } from "@fortawesome/free-solid-svg-icons"
 import { useForm } from "react-hook-form"
+import { useEffect, useState } from "react"
+import axios from "axios"
 
 const Form = () => {
+  const [userData, setUserData] = useState([])
   const { register, handleSubmit } = useForm()
   const onSubmit = (data) => console.log(data)
+
+  useEffect(() => {
+    axios
+      .get("http://localhost:3001/api/v1/user/login")
+      .then((res) => setUserData(res.data))
+  }, [])
+
+  console.log(res.data)
   return (
     <section className="sign-in-content">
       <FontAwesomeIcon icon={faCircleUser} className="sign-in-icon" />
