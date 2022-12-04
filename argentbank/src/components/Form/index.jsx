@@ -7,33 +7,56 @@ import { useEffect, useState } from "react"
 import axios from "axios"
 
 const Form = () => {
-  const [userData, setUserData] = useState([])
+  // const inputMail = document.getElementById("username")
+  // const inputPassword = document.getElementById("password")
+
+  const [userEmail, setUserEmail] = useState(null)
+  const [userPassword, setUserPassword] = useState(null)
+  const [userToken, setUserToken] = useState(null)
+
   const { register, handleSubmit } = useForm()
-  const onSubmit = (data) => console.log(data)
+
+  const onSubmit = () => {
+    setUserEmail(document.getElementById("username").value)
+    setUserPassword(document.getElementById("password").value)
+  }
 
   useEffect(() => {
     axios
-      .get("http://localhost:3001/api/v1/user/login")
-      .then((res) => setUserData(res.data))
-  }, [])
+      .post("http://localhost:3001/api/v1/user/login", {
+        email: `${userEmail}`,
+        password: `${userPassword}`,
+      })
+      .then((res) => setUserToken(res.data.body.token))
 
-  console.log(res.data)
+    if (userToken) {
+      console.log("we have a token")
+    } else {
+      console.log("we don't have a token")
+    }
+  }, [onSubmit, userEmail, userPassword, userToken])
+
   return (
     <section className="sign-in-content">
       <FontAwesomeIcon icon={faCircleUser} className="sign-in-icon" />
       <h1>Sign In</h1>
-
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className="input-wrapper">
           <label htmlFor="username">
             Username
-            <input {...register("username", { required: true })} />
+            <input
+              id="username"
+              {...register("username", { required: true })}
+            />
           </label>
         </div>
         <div className="input-wrapper">
           <label htmlFor="password">
             Password
-            <input {...register("password", { required: true })} />
+            <input
+              id="password"
+              {...register("password", { required: true })}
+            />
           </label>
         </div>
         <div className="input-remember">
