@@ -5,12 +5,10 @@ import Features from "../components/Features"
 const Accueil = () => {
   return (
     <Fragment>
-      {/* <Nav /> */}
       <main>
         <Hero />
         <Features />
       </main>
-      {/* <Footer /> */}
     </Fragment>
   )
 }
