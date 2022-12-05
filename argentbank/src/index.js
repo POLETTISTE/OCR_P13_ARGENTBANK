@@ -15,7 +15,6 @@ import PageUser from "./pages/PageUser"
 const root = ReactDOM.createRoot(document.getElementById("root"))
 root.render(
   <React.StrictMode>
-    {/* provider ici */}
     <Provider store={store}>
       <BrowserRouter>
         <Nav />
@@ -24,8 +23,6 @@ root.render(
           <Route exact path="/index" element={<PageAccueil />}></Route>
           <Route exact path="/sign-in" element={<PageSignIn />}></Route>
           <Route exact path="/user" element={<PageUser />}></Route>
-          {/* <Route path="/user/:userId" element={<User />}></Route> */}
-          {/* <Route path="*" element></Route> */}
         </Routes>
         <Footer />
       </BrowserRouter>
