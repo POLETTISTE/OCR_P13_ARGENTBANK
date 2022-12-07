@@ -13,7 +13,9 @@
 
   &-item {
     text-decoration: none;
-    margin-right: 0.5rem;
+    &:first-child {
+      margin-right: 1rem;
+    }
     &:hover {
       text-decoration: underline;
     }

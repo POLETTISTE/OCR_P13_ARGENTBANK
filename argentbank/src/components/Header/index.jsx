@@ -8,7 +8,7 @@ const Header = () => {
         <br />
         Tony Jarvis!
       </h1>
-      <button class="edit-button">Edit Name</button>
+      <button className="edit-button">Edit Name</button>
     </div>
   )
 }

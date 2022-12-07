@@ -4,7 +4,6 @@ import { faCircleUser } from "@fortawesome/free-solid-svg-icons"
 import { useForm } from "react-hook-form"
 import { useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
-
 import axios from "axios"
 
 const Form = () => {
@@ -31,7 +30,8 @@ const Form = () => {
 
   if (userToken) {
     console.log("we have a token")
-    navigate("/pages/PageUser")
+    navigate("/user")
+    window.location.reload()
   } else {
     console.log("we don't have a token")
   }
