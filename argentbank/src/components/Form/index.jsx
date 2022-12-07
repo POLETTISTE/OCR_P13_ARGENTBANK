@@ -3,13 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faCircleUser } from "@fortawesome/free-solid-svg-icons"
 import { useForm } from "react-hook-form"
 import { useEffect, useState } from "react"
-import { redirect } from "react-router-dom"
-
-// import store from "../../app/store"
-// import { useSelector, useDispatch } from "react-redux"
-// import { getTodoAsync, addTodoAsync, showLogin } from "./features/loginSlice"
-
-// import { Redirect } from "react-router-dom"
+import { useNavigate } from "react-router-dom"
 
 import axios from "axios"
 
@@ -19,17 +13,7 @@ const Form = () => {
   const [userToken, setUserToken] = useState(null)
 
   const { register, handleSubmit } = useForm()
-
-  // const login = useSelector(login)
-  // const dispatch = useDispatch()
-  // const [newLogin, setNewLogin] = useState({
-  //   email: `${userEmail}`,
-  //   password: `${userPassword}`,
-  // })
-
-  // const addNewLogin = () => {
-  //   dispatch(addTodoAsync(newLogin))
-  // }
+  const navigate = useNavigate()
 
   const onSubmit = () => {
     setUserEmail(document.getElementById("username").value)
@@ -47,7 +31,7 @@ const Form = () => {
 
   if (userToken) {
     console.log("we have a token")
-    // return redirect("/")
+    navigate("/pages/PageUser")
   } else {
     console.log("we don't have a token")
   }
