@@ -6,7 +6,7 @@ import { faCircleUser, faSignOut } from "@fortawesome/free-solid-svg-icons"
 const SignOut = () => {
   return (
     <div>
-      <a className="main-nav-item" href="./user.html">
+      <a className="main-nav-item" href="./user">
         <FontAwesomeIcon icon={faCircleUser} className="main-nav-item-icon" />
         Tony
       </a>

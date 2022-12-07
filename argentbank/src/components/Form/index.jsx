@@ -30,6 +30,8 @@ const Form = () => {
 
   if (userToken) {
     console.log("we have a token")
+    localStorage.setItem("token", userToken)
+
     navigate("/user")
     window.location.reload()
   } else {

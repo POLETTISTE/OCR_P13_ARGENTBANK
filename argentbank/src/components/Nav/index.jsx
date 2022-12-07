@@ -5,7 +5,6 @@ import SignIn from "../SignIn"
 import SignOut from "../SignOut"
 
 const pathname = window.location.pathname
-console.log(pathname)
 
 const Nav = () => {
   return (
