@@ -36,7 +36,7 @@ const Form = () => {
     // .then((res) => console.log(res.data))
   }, [onSubmit, userEmail, userPassword, userToken])
 
-  if (userToken) {
+  if (login.length !== 0) {
     console.log("we have a token")
     localStorage.setItem("token", userToken)
 
