@@ -4,9 +4,14 @@ import { faCircleUser } from "@fortawesome/free-solid-svg-icons"
 import { useForm } from "react-hook-form"
 import { useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
+import { useDispatch, useSelector } from "react-redux"
+import { setLoginData } from "../../feature/loginSlice"
 import axios from "axios"
 
 const Form = () => {
+  const dispatch = useDispatch()
+  const login = useSelector((state) => state.login.data)
+
   const [userEmail, setUserEmail] = useState(null)
   const [userPassword, setUserPassword] = useState(null)
   const [userToken, setUserToken] = useState(null)
@@ -25,7 +30,10 @@ const Form = () => {
         email: `${userEmail}`,
         password: `${userPassword}`,
       })
-      .then((res) => setUserToken(res.data.body.token))
+      // .then((res) => setUserToken(res.data.body.token))
+
+      .then((res) => dispatch(setLoginData(res.data)))
+    // .then((res) => console.log(res.data))
   }, [onSubmit, userEmail, userPassword, userToken])
 
   if (userToken) {

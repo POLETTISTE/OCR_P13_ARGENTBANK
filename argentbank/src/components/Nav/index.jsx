@@ -9,7 +9,7 @@ const pathname = window.location.pathname
 const Nav = () => {
   return (
     <nav className="main-nav">
-      <NavLink to={`/index`} className="main-nav-logo">
+      <NavLink to={"/index"} className="main-nav-logo">
         <img
           src={logo}
           alt="Argent Bank Logo"

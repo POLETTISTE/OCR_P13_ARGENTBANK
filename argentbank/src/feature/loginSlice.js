@@ -6,11 +6,11 @@ export const loginSlice = createSlice({
     data: [],
   },
   reducers: {
-    login: (state, action) => {
+    setLoginData: (state, action) => {
       state.data.push(action.payload)
     },
   },
 })
 
-export const { login } = loginSlice.actions
+export const { setLoginData } = loginSlice.actions
 export default loginSlice.reducer
