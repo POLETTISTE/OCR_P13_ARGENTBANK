@@ -2,6 +2,7 @@ import "./style.scss"
 import { useState } from "react"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faCircleUser } from "@fortawesome/free-solid-svg-icons"
+import { useForm } from "react-hook-form"
 import { useNavigate } from "react-router-dom"
 import { useDispatch, useSelector } from "react-redux"
 import { login } from "../../feature/loginSlice"
@@ -12,6 +13,8 @@ const Form = () => {
 
   const [userEmail, setUserEmail] = useState("")
   const [userPassword, setUserPassword] = useState("")
+
+  const { register, handleSubmit } = useForm()
   const navigate = useNavigate()
 
   const onSubmit = () => {
@@ -32,9 +35,9 @@ const Form = () => {
     <section className="sign-in-content">
       <FontAwesomeIcon icon={faCircleUser} className="sign-in-icon" />
       <h1>Sign In</h1>
-      <form onSubmit={onSubmit}>
+      <form onSubmit={handleSubmit(onSubmit)}>
         <div className="input-wrapper">
-          <label for="username">
+          <label htmlFor="username">
             Username
             <input
               id="username"
@@ -44,7 +47,7 @@ const Form = () => {
           </label>
         </div>
         <div className="input-wrapper">
-          <label for="email">
+          <label htmlFor="email">
             Password
             <input
               id="password"
@@ -54,7 +57,7 @@ const Form = () => {
           </label>
         </div>
         <div className="input-remember">
-          <label for="remember-me">
+          <label htmlFor="remember-me">
             Remember me
             <input type="checkbox" />
           </label>
