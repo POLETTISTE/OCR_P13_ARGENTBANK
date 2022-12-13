@@ -4,8 +4,6 @@ export const loginSlice = createSlice({
   name: "login",
   initialState: {
     isConnected: false,
-    // firstname:'',
-    // lastname:'',
   },
   reducers: {
     login: (state) => {

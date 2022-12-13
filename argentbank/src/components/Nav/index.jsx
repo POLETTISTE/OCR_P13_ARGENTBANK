@@ -5,11 +5,9 @@ import { NavLink } from "react-router-dom"
 
 import SignIn from "../SignIn"
 import SignOut from "../SignOut"
-import { useDispatch, useSelector } from "react-redux"
-import store from "../../store"
+import { useSelector } from "react-redux"
 
 const Nav = () => {
-  const dispatch = useDispatch()
   const isConnected = useSelector((state) => state.login.isConnected)
 
   return (
@@ -23,8 +21,9 @@ const Nav = () => {
 
         <h1 className="sr-only">Argent Bank</h1>
       </NavLink>
-
-      {isConnected ? <SignOut /> : <SignIn />}
+      {/* a modifier avec redux dispatch pour le prenom */}
+      {isConnected ? <SignOut name="name" /> : <SignIn />}
+      {/* {isConnected ? <SignOut firstName={`${firstName}`} /> : <SignIn />} */}
     </nav>
   )
 }

@@ -13,6 +13,7 @@ const Form = () => {
 
   const [userEmail, setUserEmail] = useState("")
   const [userPassword, setUserPassword] = useState("")
+  const [rememberMe, setRememberMe] = useState(false)
 
   const { register, handleSubmit } = useForm()
   const navigate = useNavigate()
@@ -26,7 +27,10 @@ const Form = () => {
 
       .then((res) => {
         dispatch(login())
-        localStorage.setItem("token", res.data.body.token)
+        {
+          localStorage.setItem("token", res.data.body.token)
+        }
+
         navigate("/user")
       })
   }
@@ -59,7 +63,12 @@ const Form = () => {
         <div className="input-remember">
           <label htmlFor="remember-me">
             Remember me
-            <input type="checkbox" />
+            <input
+              type="checkbox"
+              onChange={(e) => setRememberMe(!rememberMe)}
+
+              //rajouter on select setusertoken(tokern.value) dans le local storage
+            />
           </label>
         </div>
         <button type="submit" value="submit" className="sign-in-button">
