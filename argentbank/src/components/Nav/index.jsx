@@ -1,14 +1,16 @@
 import "./style.scss"
 import logo from "../../img/argentBankLogo.png"
 import { NavLink } from "react-router-dom"
+// import { logout } from "../../feature/loginSlice"
+
 import SignIn from "../SignIn"
 import SignOut from "../SignOut"
-import { logout } from "../../feature/loginSlice"
 import { useDispatch, useSelector } from "react-redux"
+import store from "../../store"
 
 const Nav = () => {
   const dispatch = useDispatch()
-  const { isConnected } = useSelector((state) => state.login.isConnected)
+  const isConnected = useSelector((state) => state.login.isConnected)
 
   return (
     <nav className="main-nav">
@@ -21,10 +23,8 @@ const Nav = () => {
 
         <h1 className="sr-only">Argent Bank</h1>
       </NavLink>
-      {/* if current page is home */}
-      {isConnected ? <SignOut /> : <SignIn />}
 
-      {/* if current page is user */}
+      {isConnected ? <SignOut /> : <SignIn />}
     </nav>
   )
 }
