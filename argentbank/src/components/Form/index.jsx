@@ -13,8 +13,6 @@ const Form = () => {
 
   const [userEmail, setUserEmail] = useState("")
   const [userPassword, setUserPassword] = useState("")
-  // const [rememberMe, setRememberMe] = useState(false)
-  // const rememberMe = useSelector((state) => state.login.rememberMe)
 
   const navigate = useNavigate()
 
