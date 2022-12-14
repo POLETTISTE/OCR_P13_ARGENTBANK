@@ -2,7 +2,6 @@ import "./style.scss"
 import { useState } from "react"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faCircleUser } from "@fortawesome/free-solid-svg-icons"
-import { useForm } from "react-hook-form"
 import { useNavigate } from "react-router-dom"
 import { useDispatch, useSelector } from "react-redux"
 import { login } from "../../feature/loginSlice"
@@ -15,10 +14,11 @@ const Form = () => {
   const [userPassword, setUserPassword] = useState("")
   const [rememberMe, setRememberMe] = useState(false)
 
-  const { register, handleSubmit } = useForm()
+  // const { register, handleSubmit } = useForm()
   const navigate = useNavigate()
 
-  const onSubmit = () => {
+  const onSubmit = (e) => {
+    e.preventDefault()
     axios
       .post("http://localhost:3001/api/v1/user/login", {
         email: `${userEmail}`,
@@ -39,7 +39,7 @@ const Form = () => {
     <section className="sign-in-content">
       <FontAwesomeIcon icon={faCircleUser} className="sign-in-icon" />
       <h1>Sign In</h1>
-      <form onSubmit={handleSubmit(onSubmit)}>
+      <form onSubmit={onSubmit}>
         <div className="input-wrapper">
           <label htmlFor="username">
             Username
