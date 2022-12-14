@@ -2,8 +2,11 @@ import "./style.scss"
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faCircleUser, faSignOut } from "@fortawesome/free-solid-svg-icons"
+import { useSelector } from "react-redux"
 
-const SignOut = ({ firstName }) => {
+const SignOut = () => {
+  const firstName = useSelector((state) => state.login.firstName)
+
   return (
     <div>
       <a className="main-nav-item" href="./user">

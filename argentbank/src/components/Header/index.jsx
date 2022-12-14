@@ -1,7 +1,9 @@
 import "./style.scss"
+import { useSelector } from "react-redux"
 
-const Header = ({ firstName }) => {
+const Header = () => {
   //recuperer donnees utilisateur et afficher dans nav et header
+  const firstName = useSelector((state) => state.login.firstName)
 
   return (
     <div className="header">

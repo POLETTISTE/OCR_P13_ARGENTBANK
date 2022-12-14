@@ -6,15 +6,16 @@ import { useNavigate } from "react-router-dom"
 import { useDispatch, useSelector } from "react-redux"
 import { login } from "../../feature/loginSlice"
 import axios from "axios"
+import { setRememberMe } from "../../feature/loginSlice"
 
 const Form = () => {
   const dispatch = useDispatch()
 
   const [userEmail, setUserEmail] = useState("")
   const [userPassword, setUserPassword] = useState("")
-  const [rememberMe, setRememberMe] = useState(false)
+  // const [rememberMe, setRememberMe] = useState(false)
+  // const rememberMe = useSelector((state) => state.login.rememberMe)
 
-  // const { register, handleSubmit } = useForm()
   const navigate = useNavigate()
 
   const onSubmit = (e) => {
@@ -33,6 +34,7 @@ const Form = () => {
 
         navigate("/user")
       })
+      .catch((error) => console.log("erreur dans l'API Form", error))
   }
 
   return (
@@ -65,7 +67,8 @@ const Form = () => {
             Remember me
             <input
               type="checkbox"
-              onChange={(e) => setRememberMe(!rememberMe)}
+              onChange={(e) => dispatch(setRememberMe(e.target.value))}
+              //
 
               //rajouter on select setusertoken(tokern.value) dans le local storage
             />
