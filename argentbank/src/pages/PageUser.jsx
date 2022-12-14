@@ -1,12 +1,14 @@
 import Account from "../components/Account"
 import Header from "../components/Header"
 import axios from "axios"
-import { useState } from "react"
+
 import { useEffect } from "react"
+import { useDispatch, useSelector } from "react-redux"
+import { updateFirstName } from "../feature/loginSlice"
 
 const PageUser = () => {
-  const [data, setData] = useState("")
-  const [firstName, setFirstName] = useState("")
+  const dispatch = useDispatch()
+  const firstName = useSelector((state) => state.login.firstName)
 
   useEffect(() => {
     const token = window.localStorage.getItem("token")
@@ -23,8 +25,9 @@ const PageUser = () => {
         }
       )
       .then((res) => {
-        setData(res)
-        setFirstName(res.data.body.firstName)
+        dispatch(updateFirstName(res.data.body.firstName))
+        // setData(res)
+        // setFirstName(res.data.body.firstName)
       })
       .catch((error) => console.log("erreur dans l'API", error))
   }, [])

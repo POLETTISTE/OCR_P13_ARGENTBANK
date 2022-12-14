@@ -8,6 +8,7 @@ import SignOut from "../SignOut"
 import { useSelector } from "react-redux"
 
 const Nav = () => {
+  const firstName = useSelector((state) => state.login.firstName)
   const isConnected = useSelector((state) => state.login.isConnected)
 
   return (
@@ -22,7 +23,7 @@ const Nav = () => {
         <h1 className="sr-only">Argent Bank</h1>
       </NavLink>
       {/* a modifier avec redux dispatch pour le prenom */}
-      {isConnected ? <SignOut name="name" /> : <SignIn />}
+      {isConnected ? <SignOut firstName={`${firstName}`} /> : <SignIn />}
       {/* {isConnected ? <SignOut firstName={`${firstName}`} /> : <SignIn />} */}
     </nav>
   )

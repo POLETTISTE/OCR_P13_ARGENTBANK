@@ -4,8 +4,8 @@ export const loginSlice = createSlice({
   name: "login",
   initialState: {
     isConnected: false,
-    updateFirstName: "",
-    updateLastName: "",
+    firstName: null,
+    lastName: null,
   },
   reducers: {
     login: (state) => {
@@ -14,15 +14,17 @@ export const loginSlice = createSlice({
     logout: (state) => {
       state.isConnected = false
     },
-    firstName: (state) => {
-      state.updateFirstName = ""
+    updateFirstName: (state, action) => {
+      state.firstName = action.payload
     },
-    lastName: (state) => {
-      state.updateLastName = ""
+    updateLastName: (state, action) => {
+      state.lastName = ""
     },
     // update first/last avec action payload
   },
 })
 
-export const { login, logout } = loginSlice.actions
+export const { login, logout, updateFirstName, updateLastName } =
+  loginSlice.actions
+
 export default loginSlice.reducer
