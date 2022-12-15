@@ -7,7 +7,7 @@ export const loginSlice = createSlice({
     rememberMe: false,
     // email:null,
     // password:null,
-    firstName: null,
+    firstName: "",
   },
   reducers: {
     login: (state) => {

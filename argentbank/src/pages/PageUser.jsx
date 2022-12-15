@@ -24,6 +24,7 @@ const PageUser = () => {
         }
       )
       .then((res) => {
+        console.log(res.data)
         dispatch(updateFirstName(res.data.body.firstName))
       })
       .catch((error) => console.log("erreur dans l'API page User", error))
