@@ -5,8 +5,6 @@ export const loginSlice = createSlice({
   initialState: {
     isConnected: false,
     rememberMe: false,
-    // email:null,
-    // password:null,
     firstName: "",
     lastName: "",
   },

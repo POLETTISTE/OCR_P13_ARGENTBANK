@@ -17,7 +17,7 @@ const Header = () => {
   const lastNameField = document.getElementById("userLastName")
 
   const editName = () => {
-    modal.classList.remove("hide")
+    modal.classList.toggle("hide")
   }
 
   const editNameCancel = (e) => {
@@ -34,8 +34,7 @@ const Header = () => {
     console.log("validation changements")
 
     const token = window.localStorage.getItem("token")
-    firstNameField.value = ""
-    lastNameField.value = ""
+
     modal.classList.add("hide")
 
     axios
@@ -57,6 +56,8 @@ const Header = () => {
         console.log(res)
         dispatch(updateLastName(lastName))
         dispatch(updateFirstName(firstName))
+        firstNameField.value = ""
+        lastNameField.value = ""
       })
       .catch((error) => console.log("erreur dans l'API page User", error))
   }
@@ -78,7 +79,6 @@ const Header = () => {
               id="userFirstName"
               onChange={(e) => setFirstName(e.target.value)}
               placeholder={firstNameStore}
-              // value="{firstNameStore}"
             />
           </label>
           <label htmlFor="userLastName">
@@ -86,7 +86,6 @@ const Header = () => {
               id="userLastName"
               onChange={(e) => setLastName(e.target.value)}
               placeholder={lastNameStore}
-              // value="{lastNameStore}"
             />
           </label>
           <button
