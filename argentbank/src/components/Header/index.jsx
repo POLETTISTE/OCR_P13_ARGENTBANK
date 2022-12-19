@@ -38,7 +38,10 @@ const Header = () => {
   const editNameSave = (e) => {
     e.preventDefault()
     // console.log("validation changements")
-
+    if ((firstNameField.value && lastNameField.value) === "") {
+      alert("Firstname and name fields must be filled out")
+      return false
+    }
     const token = window.localStorage.getItem("token")
 
     firstNameField.value = ""
@@ -84,6 +87,7 @@ const Header = () => {
           <div className="header-user-infos">
             <label htmlFor="userFirstName">
               <input
+                required
                 id="userFirstName"
                 onChange={(e) => setFirstName(e.target.value)}
                 placeholder={firstNameStore}
@@ -91,6 +95,7 @@ const Header = () => {
             </label>
             <label htmlFor="userLastName">
               <input
+                required
                 id="userLastName"
                 onChange={(e) => setLastName(e.target.value)}
                 placeholder={lastNameStore}
