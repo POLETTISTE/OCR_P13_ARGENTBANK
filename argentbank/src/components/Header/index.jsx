@@ -1,8 +1,12 @@
 import "./style.scss"
 import axios from "axios"
-import { useSelector } from "react-redux"
-import { useDispatch } from "react-redux"
-import { updateFirstName, updateLastName } from "../../feature/loginSlice"
+import { useSelector, useDispatch } from "react-redux"
+import {
+  updateFirstName,
+  updateLastName,
+  setLightMode,
+  clearLightMode,
+} from "../../feature/loginSlice"
 import { useState } from "react"
 
 const Header = () => {
@@ -10,47 +14,80 @@ const Header = () => {
   const [lastName, setLastName] = useState("")
 
   const dispatch = useDispatch()
+  // utiliser use selector pour voir si lightmode est true
   const firstNameStore = useSelector((state) => state.login.firstName)
   const lastNameStore = useSelector((state) => state.login.lastName)
+  const isLightModeStore = useSelector((state) => state.login.lightMode)
+  // {
+  //   isLightModeStore ? editNameStyle() : removeEditNameStyle()
+  // }
 
-  const modal = document.querySelector(".modal")
-  const editButton = document.querySelector(".edit-button")
   const firstNameField = document.getElementById("userFirstName")
   const lastNameField = document.getElementById("userLastName")
+  const main = document.querySelector("main")
+  const header = document.querySelector(".header")
+  const h1 = document.querySelector("h1")
   const h1Span = document.querySelector("h1 span")
+  const modal = document.querySelector(".modal")
+  const editButton = document.querySelector(".edit-button")
+  const transactionButton = document.querySelectorAll(".transaction-button")
+  const transactionButtonEdit = document.querySelectorAll(
+    ".transaction-button-edit"
+  )
+
+  const editNameStyle = () => {
+    main.classList.add("bg-light")
+    header.classList.add("bg-light")
+    h1.classList.add("bg-light")
+    h1Span.classList.add("hide")
+    modal.classList.remove("hide")
+    editButton.classList.add("hide")
+    transactionButton.forEach((btn) => {
+      btn.classList.add("transaction-button-edit")
+    })
+  }
+
+  const removeEditNameStyle = () => {
+    main.classList.remove("bg-light")
+    header.classList.remove("bg-light")
+    h1.classList.remove("bg-light")
+    h1Span.classList.remove("hide")
+    modal.classList.add("hide")
+    editButton.classList.remove("hide")
+    transactionButtonEdit.forEach((btn) => {
+      btn.classList.remove("transaction-button-edit")
+    })
+  }
 
   const editName = (e) => {
     e.preventDefault()
-    h1Span.classList.add("hide")
+    dispatch(setLightMode(true))
 
-    modal.classList.remove("hide")
-    editButton.classList.add("hide")
+    editNameStyle()
   }
 
   const editNameCancel = (e) => {
     e.preventDefault()
-    h1Span.classList.remove("hide")
+    dispatch(clearLightMode(true))
 
+    removeEditNameStyle()
     firstNameField.value = ""
     lastNameField.value = ""
-    modal.classList.add("hide")
-    editButton.classList.remove("hide")
   }
 
   const editNameSave = (e) => {
     e.preventDefault()
-    // console.log("validation changements")
+    dispatch(clearLightMode(true))
+
     if ((firstNameField.value && lastNameField.value) === "") {
       alert("Firstname and name fields must be filled out")
       return false
     }
     const token = window.localStorage.getItem("token")
-    h1Span.classList.remove("hide")
 
+    removeEditNameStyle()
     firstNameField.value = ""
     lastNameField.value = ""
-    modal.classList.add("hide")
-    editButton.classList.remove("hide")
 
     axios
       .put(
@@ -109,15 +146,14 @@ const Header = () => {
               id="submit"
               type="submit"
               value="submit"
-              className=""
               onClick={editNameSave}
             >
               Save
             </button>
             <button
+              id="cancel"
               type="submit"
               value="cancel"
-              className=""
               onClick={editNameCancel}
             >
               Cancel

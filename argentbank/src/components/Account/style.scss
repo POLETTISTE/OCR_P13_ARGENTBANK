@@ -41,6 +41,12 @@
   border-color: #00bc77;
   background-color: #00bc77;
   color: #fff;
+
+  &-edit {
+    border-color: #6457f6;
+    background-color: #6457f6;
+    color: white;
+  }
 }
 
 @media (min-width: 720px) {

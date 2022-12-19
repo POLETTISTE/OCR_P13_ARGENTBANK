@@ -7,6 +7,7 @@ export const loginSlice = createSlice({
     rememberMe: false,
     firstName: "",
     lastName: "",
+    lightMode: false,
   },
   reducers: {
     login: (state) => {
@@ -28,6 +29,12 @@ export const loginSlice = createSlice({
     updateLastName: (state, action) => {
       state.lastName = action.payload
     },
+    setLightMode: (state, action) => {
+      state.lightMode = true
+    },
+    clearLightMode: (state, action) => {
+      state.lightMode = false
+    },
   },
 })
 
@@ -38,6 +45,8 @@ export const {
   clearRememberMe,
   updateFirstName,
   updateLastName,
+  setLightMode,
+  clearLightMode,
 } = loginSlice.actions
 
 export default loginSlice.reducer
