@@ -1,20 +1,21 @@
 import "./style.scss"
-import { useState } from "react"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faCircleUser } from "@fortawesome/free-solid-svg-icons"
+
+import { useState } from "react"
 import { useNavigate } from "react-router-dom"
-import { useDispatch, useSelector } from "react-redux"
-import { login } from "../../feature/loginSlice"
+import { useDispatch } from "react-redux"
+
+import { login, setRememberMe } from "../../feature/loginSlice"
+
 import axios from "axios"
-import { setRememberMe } from "../../feature/loginSlice"
 
 const Form = () => {
   const dispatch = useDispatch()
+  const navigate = useNavigate()
 
   const [userEmail, setUserEmail] = useState("")
   const [userPassword, setUserPassword] = useState("")
-
-  const navigate = useNavigate()
 
   const onSubmit = (e) => {
     e.preventDefault()

@@ -2,11 +2,7 @@ import "./style.scss"
 import axios from "axios"
 import { useSelector } from "react-redux"
 import { useDispatch } from "react-redux"
-import {
-  login,
-  updateFirstName,
-  updateLastName,
-} from "../../feature/loginSlice"
+import { updateFirstName, updateLastName } from "../../feature/loginSlice"
 import { useState } from "react"
 
 const Header = () => {
@@ -17,18 +13,30 @@ const Header = () => {
   const [firstName, setFirstName] = useState("")
   const [lastName, setLastName] = useState("")
   const modal = document.querySelector(".modal")
+  const firstNameField = document.getElementById("userFirstName")
+  const lastNameField = document.getElementById("userLastName")
 
   const editName = () => {
     modal.classList.remove("hide")
   }
 
-  const editNameValidation = (e) => {
+  const editNameCancel = (e) => {
+    e.preventDefault()
+    console.log("annule changements")
+    firstNameField.value = ""
+    lastNameField.value = ""
+
+    modal.classList.add("hide")
+  }
+
+  const editNameSave = (e) => {
     e.preventDefault()
     console.log("validation changements")
 
     const token = window.localStorage.getItem("token")
+    firstNameField.value = ""
+    lastNameField.value = ""
     modal.classList.add("hide")
-    // dispatch(updateFirstName(firstName))
 
     axios
       .put(
@@ -85,9 +93,17 @@ const Header = () => {
             type="submit"
             value="submit"
             className=""
-            onClick={editNameValidation}
+            onClick={editNameSave}
           >
-            ok
+            Save
+          </button>
+          <button
+            type="submit"
+            value="cancel"
+            className=""
+            onClick={editNameCancel}
+          >
+            Cancel
           </button>
         </form>
       </div>

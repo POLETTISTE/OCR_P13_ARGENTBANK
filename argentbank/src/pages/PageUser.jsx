@@ -24,7 +24,6 @@ const PageUser = () => {
         }
       )
       .then((res) => {
-        console.log(res.data)
         dispatch(updateFirstName(res.data.body.firstName))
         dispatch(updateLastName(res.data.body.lastName))
       })
