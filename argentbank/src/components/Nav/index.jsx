@@ -18,7 +18,7 @@ const Nav = () => {
           alt="Argent Bank Logo"
           className="main-nav-logo-image"
         />
-        <h1 className="sr-only">Argent Bank</h1>
+        <h2 className="sr-only">Argent Bank</h2>
       </NavLink>
       {isConnected ? <SignOut /> : <SignIn />}
     </nav>

@@ -17,9 +17,11 @@ const Header = () => {
   const editButton = document.querySelector(".edit-button")
   const firstNameField = document.getElementById("userFirstName")
   const lastNameField = document.getElementById("userLastName")
+  const h1Span = document.querySelector("h1 span")
 
   const editName = (e) => {
     e.preventDefault()
+    h1Span.classList.add("hide")
 
     modal.classList.remove("hide")
     editButton.classList.add("hide")
@@ -27,10 +29,10 @@ const Header = () => {
 
   const editNameCancel = (e) => {
     e.preventDefault()
-    // console.log("annule changements")
+    h1Span.classList.remove("hide")
+
     firstNameField.value = ""
     lastNameField.value = ""
-
     modal.classList.add("hide")
     editButton.classList.remove("hide")
   }
@@ -43,6 +45,7 @@ const Header = () => {
       return false
     }
     const token = window.localStorage.getItem("token")
+    h1Span.classList.remove("hide")
 
     firstNameField.value = ""
     lastNameField.value = ""
@@ -76,15 +79,14 @@ const Header = () => {
     <div className="header">
       <h1>
         Welcome back
-        <br />
-        {firstNameStore}
+        <br /> <span>{firstNameStore}</span>
       </h1>
       <button className="edit-button" onClick={editName}>
         Edit Name
       </button>
       <div className="modal hide">
         <form>
-          <div className="header-user-infos">
+          <div className="modal-user-infos">
             <label htmlFor="userFirstName">
               <input
                 required
@@ -102,23 +104,25 @@ const Header = () => {
               />
             </label>
           </div>
-          <button
-            id="submit"
-            type="submit"
-            value="submit"
-            className=""
-            onClick={editNameSave}
-          >
-            Save
-          </button>
-          <button
-            type="submit"
-            value="cancel"
-            className=""
-            onClick={editNameCancel}
-          >
-            Cancel
-          </button>
+          <div className="modal-btn">
+            <button
+              id="submit"
+              type="submit"
+              value="submit"
+              className=""
+              onClick={editNameSave}
+            >
+              Save
+            </button>
+            <button
+              type="submit"
+              value="cancel"
+              className=""
+              onClick={editNameCancel}
+            >
+              Cancel
+            </button>
+          </div>
         </form>
       </div>
     </div>
