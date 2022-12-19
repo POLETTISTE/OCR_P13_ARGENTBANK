@@ -13,14 +13,9 @@ export const loginSlice = createSlice({
     login: (state) => {
       state.isConnected = true
     },
-    logout: (state) => {
-      state.isConnected = false
-    },
+
     setRememberMe: (state) => {
       state.rememberMe = true
-    },
-    clearRememberMe: (state) => {
-      state.rememberMe = false
     },
 
     updateFirstName: (state, action) => {
@@ -32,21 +27,15 @@ export const loginSlice = createSlice({
     setLightMode: (state, action) => {
       state.lightMode = true
     },
-    clearLightMode: (state, action) => {
-      state.lightMode = false
-    },
   },
 })
 
 export const {
   login,
-  logout,
   setRememberMe,
-  clearRememberMe,
   updateFirstName,
   updateLastName,
   setLightMode,
-  clearLightMode,
 } = loginSlice.actions
 
 export default loginSlice.reducer

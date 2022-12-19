@@ -5,7 +5,7 @@ import {
   updateFirstName,
   updateLastName,
   setLightMode,
-  clearLightMode,
+  // clearLightMode,
 } from "../../feature/loginSlice"
 import { useState } from "react"
 
@@ -68,7 +68,7 @@ const Header = () => {
 
   const editNameCancel = (e) => {
     e.preventDefault()
-    dispatch(clearLightMode(true))
+    dispatch(setLightMode(false))
 
     removeEditNameStyle()
     firstNameField.value = ""
@@ -77,7 +77,7 @@ const Header = () => {
 
   const editNameSave = (e) => {
     e.preventDefault()
-    dispatch(clearLightMode(true))
+    dispatch(setLightMode(false))
 
     if ((firstNameField.value && lastNameField.value) === "") {
       alert("Firstname and name fields must be filled out")
