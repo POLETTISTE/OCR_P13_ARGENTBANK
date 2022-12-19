@@ -8,6 +8,7 @@ export const loginSlice = createSlice({
     // email:null,
     // password:null,
     firstName: "",
+    lastName: "",
   },
   reducers: {
     login: (state) => {
@@ -29,7 +30,6 @@ export const loginSlice = createSlice({
     updateLastName: (state, action) => {
       state.lastName = action.payload
     },
-    // update first/last avec action payload
   },
 })
 

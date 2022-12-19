@@ -2,21 +2,24 @@ import "./style.scss"
 import axios from "axios"
 import { useSelector } from "react-redux"
 import { useDispatch } from "react-redux"
-import { login, updateFirstName } from "../../feature/loginSlice"
+import {
+  login,
+  updateFirstName,
+  updateLastName,
+} from "../../feature/loginSlice"
 import { useState } from "react"
 
 const Header = () => {
   const dispatch = useDispatch()
   const firstNameStore = useSelector((state) => state.login.firstName)
+  const lastNameStore = useSelector((state) => state.login.lastName)
+
   const [firstName, setFirstName] = useState("")
   const [lastName, setLastName] = useState("")
   const modal = document.querySelector(".modal")
 
   const editName = () => {
-    console.log("modale")
     modal.classList.remove("hide")
-
-    console.log(modal)
   }
 
   const editNameValidation = (e) => {
@@ -33,6 +36,7 @@ const Header = () => {
 
         {
           firstName: firstName,
+          lastName: lastName,
         },
         {
           headers: {
@@ -42,9 +46,9 @@ const Header = () => {
         }
       )
       .then((res) => {
-        dispatch(updateFirstName(firstName))
-
         console.log(res)
+        dispatch(updateLastName(lastName))
+        dispatch(updateFirstName(firstName))
       })
       .catch((error) => console.log("erreur dans l'API page User", error))
   }
@@ -61,13 +65,20 @@ const Header = () => {
       </button>
       <div className="modal hide">
         <form>
-          <label htmlFor="username">
-            Username
+          <label htmlFor="userFirstName">
             <input
-              id="username"
+              id="userFirstName"
               onChange={(e) => setFirstName(e.target.value)}
-              placeholder=""
+              placeholder={firstNameStore}
               // value="{firstNameStore}"
+            />
+          </label>
+          <label htmlFor="userLastName">
+            <input
+              id="userLastName"
+              onChange={(e) => setLastName(e.target.value)}
+              placeholder={lastNameStore}
+              // value="{lastNameStore}"
             />
           </label>
           <button

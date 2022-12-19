@@ -4,7 +4,7 @@ import axios from "axios"
 
 import { useEffect } from "react"
 import { useDispatch } from "react-redux"
-import { updateFirstName } from "../feature/loginSlice"
+import { updateFirstName, updateLastName } from "../feature/loginSlice"
 
 const PageUser = () => {
   const dispatch = useDispatch()
@@ -26,6 +26,7 @@ const PageUser = () => {
       .then((res) => {
         console.log(res.data)
         dispatch(updateFirstName(res.data.body.firstName))
+        dispatch(updateLastName(res.data.body.lastName))
       })
       .catch((error) => console.log("erreur dans l'API page User", error))
   }, [dispatch])

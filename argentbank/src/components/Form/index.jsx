@@ -41,20 +41,20 @@ const Form = () => {
       <h1>Sign In</h1>
       <form onSubmit={onSubmit}>
         <div className="input-wrapper">
-          <label htmlFor="username">
+          <label htmlFor="userEmail">
             Username
             <input
-              id="username"
+              id="userEmail"
               onChange={(e) => setUserEmail(e.target.value)}
               value={userEmail}
             />
           </label>
         </div>
         <div className="input-wrapper">
-          <label htmlFor="email">
+          <label htmlFor="userPassword">
             Password
             <input
-              id="password"
+              id="userPassword"
               onChange={(e) => setUserPassword(e.target.value)}
               value={userPassword}
             />
