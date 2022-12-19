@@ -15,8 +15,9 @@ body {
 
 .main {
   flex: 1;
-  padding-bottom: 10px;
-  // height: 44rem;
+  min-height: 44rem;
+
+  padding-bottom: 1px;
 }
 
 a {
