@@ -6,36 +6,45 @@ import { updateFirstName, updateLastName } from "../../feature/loginSlice"
 import { useState } from "react"
 
 const Header = () => {
+  const [firstName, setFirstName] = useState("")
+  const [lastName, setLastName] = useState("")
+
   const dispatch = useDispatch()
   const firstNameStore = useSelector((state) => state.login.firstName)
   const lastNameStore = useSelector((state) => state.login.lastName)
 
-  const [firstName, setFirstName] = useState("")
-  const [lastName, setLastName] = useState("")
   const modal = document.querySelector(".modal")
+  const editButton = document.querySelector(".edit-button")
   const firstNameField = document.getElementById("userFirstName")
   const lastNameField = document.getElementById("userLastName")
 
-  const editName = () => {
-    modal.classList.toggle("hide")
+  const editName = (e) => {
+    e.preventDefault()
+
+    modal.classList.remove("hide")
+    editButton.classList.add("hide")
   }
 
   const editNameCancel = (e) => {
     e.preventDefault()
-    console.log("annule changements")
+    // console.log("annule changements")
     firstNameField.value = ""
     lastNameField.value = ""
 
     modal.classList.add("hide")
+    editButton.classList.remove("hide")
   }
 
   const editNameSave = (e) => {
     e.preventDefault()
-    console.log("validation changements")
+    // console.log("validation changements")
 
     const token = window.localStorage.getItem("token")
 
+    firstNameField.value = ""
+    lastNameField.value = ""
     modal.classList.add("hide")
+    editButton.classList.remove("hide")
 
     axios
       .put(
@@ -56,8 +65,6 @@ const Header = () => {
         console.log(res)
         dispatch(updateLastName(lastName))
         dispatch(updateFirstName(firstName))
-        firstNameField.value = ""
-        lastNameField.value = ""
       })
       .catch((error) => console.log("erreur dans l'API page User", error))
   }
@@ -74,21 +81,24 @@ const Header = () => {
       </button>
       <div className="modal hide">
         <form>
-          <label htmlFor="userFirstName">
-            <input
-              id="userFirstName"
-              onChange={(e) => setFirstName(e.target.value)}
-              placeholder={firstNameStore}
-            />
-          </label>
-          <label htmlFor="userLastName">
-            <input
-              id="userLastName"
-              onChange={(e) => setLastName(e.target.value)}
-              placeholder={lastNameStore}
-            />
-          </label>
+          <div className="header-user-infos">
+            <label htmlFor="userFirstName">
+              <input
+                id="userFirstName"
+                onChange={(e) => setFirstName(e.target.value)}
+                placeholder={firstNameStore}
+              />
+            </label>
+            <label htmlFor="userLastName">
+              <input
+                id="userLastName"
+                onChange={(e) => setLastName(e.target.value)}
+                placeholder={lastNameStore}
+              />
+            </label>
+          </div>
           <button
+            id="submit"
             type="submit"
             value="submit"
             className=""
