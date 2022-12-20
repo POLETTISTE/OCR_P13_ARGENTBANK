@@ -22,9 +22,6 @@ const Header = () => {
   const modal = document.querySelector(".modal")
   const editButton = document.querySelector(".edit-button")
   const transactionButton = document.querySelectorAll(".transaction-button")
-  const transactionButtonEdit = document.querySelectorAll(
-    ".transaction-button-edit"
-  )
 
   const editNameStyle = () => {
     main.classList.add("bg-light")
@@ -45,7 +42,7 @@ const Header = () => {
     h1Span.classList.remove("hide")
     modal.classList.add("hide")
     editButton.classList.remove("hide")
-    transactionButtonEdit.forEach((btn) => {
+    transactionButton.forEach((btn) => {
       btn.classList.remove("transaction-button-edit")
     })
   }
