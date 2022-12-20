@@ -7,16 +7,28 @@ import PageUser from "../../pages/PageUser"
 
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom"
 import { useSelector } from "react-redux"
+import PropTypes from "prop-types"
 
 const App = () => {
   const isConnected = useSelector((state) => state.login.isConnected)
 
+  /**
+   * Represents Protected route.
+   * @constructor
+   * @param {component} children - The child component which is protected (pageUser component).
+   */
   const ProtectedRoute = ({ children }) => {
     if (!isConnected) {
       return <Navigate to="/" replace />
     }
     return children
   }
+
+  //children must be a component (page user)
+  ProtectedRoute.propTypes = {
+    children: PropTypes.element.isRequired,
+  }
+
   return (
     <div className="App">
       <BrowserRouter>
