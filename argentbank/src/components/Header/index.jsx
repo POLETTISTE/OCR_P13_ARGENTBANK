@@ -1,12 +1,7 @@
 import "./style.scss"
 import axios from "axios"
 import { useSelector, useDispatch } from "react-redux"
-import {
-  updateFirstName,
-  updateLastName,
-  setLightMode,
-  // clearLightMode,
-} from "../../feature/loginSlice"
+import { updateFirstName, updateLastName } from "../../feature/loginSlice"
 import { useState } from "react"
 
 const Header = () => {
@@ -14,13 +9,9 @@ const Header = () => {
   const [lastName, setLastName] = useState("")
 
   const dispatch = useDispatch()
-  // utiliser use selector pour voir si lightmode est true
+
   const firstNameStore = useSelector((state) => state.login.firstName)
   const lastNameStore = useSelector((state) => state.login.lastName)
-  const isLightModeStore = useSelector((state) => state.login.lightMode)
-  // {
-  //   isLightModeStore ? editNameStyle() : removeEditNameStyle()
-  // }
 
   const firstNameField = document.getElementById("userFirstName")
   const lastNameField = document.getElementById("userLastName")
@@ -61,14 +52,12 @@ const Header = () => {
 
   const editName = (e) => {
     e.preventDefault()
-    dispatch(setLightMode(true))
 
     editNameStyle()
   }
 
   const editNameCancel = (e) => {
     e.preventDefault()
-    dispatch(setLightMode(false))
 
     removeEditNameStyle()
     firstNameField.value = ""
@@ -77,7 +66,6 @@ const Header = () => {
 
   const editNameSave = (e) => {
     e.preventDefault()
-    dispatch(setLightMode(false))
 
     if ((firstNameField.value && lastNameField.value) === "") {
       alert("Firstname and name fields must be filled out")
