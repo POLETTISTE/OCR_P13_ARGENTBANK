@@ -105,7 +105,6 @@ const Header = () => {
         }
       )
       .then((res) => {
-        console.log(res)
         dispatch(updateLastName(lastName))
         dispatch(updateFirstName(firstName))
       })
