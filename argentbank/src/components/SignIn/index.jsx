@@ -6,7 +6,7 @@ import { faCircleUser } from "@fortawesome/free-solid-svg-icons"
 const SignIn = () => {
   return (
     <div>
-      <a className="main-nav-item" href="./sign-in">
+      <a className="main-nav-item" href="./login">
         <FontAwesomeIcon icon={faCircleUser} className="main-nav-item-icon" />
         Sign In
       </a>

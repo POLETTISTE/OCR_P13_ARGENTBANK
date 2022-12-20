@@ -31,7 +31,7 @@ const Form = () => {
           localStorage.setItem("token", res.data.body.token)
         }
 
-        navigate("/user")
+        navigate("/profile")
       })
       .catch((error) => console.log("erreur dans l'API Form", error))
   }

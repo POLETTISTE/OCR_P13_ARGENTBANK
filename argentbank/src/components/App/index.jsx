@@ -24,10 +24,10 @@ const App = () => {
         <Routes>
           <Route exact path="/" element={<PageAccueil />}></Route>
           <Route exact path="/index" element={<PageAccueil />}></Route>
-          <Route exact path="/sign-in" element={<PageSignIn />}></Route>
+          <Route exact path="/login" element={<PageSignIn />}></Route>
           <Route
             exact
-            path="/user"
+            path="/profile"
             element={
               <ProtectedRoute>
                 <PageUser />
