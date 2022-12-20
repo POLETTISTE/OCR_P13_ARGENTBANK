@@ -9,11 +9,11 @@ const SignOut = () => {
 
   return (
     <div>
-      <a className="main-nav-item" href="./profile">
+      <a className="main-nav-item" href="/profile">
         <FontAwesomeIcon icon={faCircleUser} className="main-nav-item-icon" />
         {firstName}
       </a>
-      <a className="main-nav-item" href="./login">
+      <a className="main-nav-item" href="/login">
         <FontAwesomeIcon icon={faSignOut} className="main-nav-item-icon" />
         Sign Out
       </a>
