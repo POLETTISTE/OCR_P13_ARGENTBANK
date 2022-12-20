@@ -27,9 +27,8 @@ const Form = () => {
 
       .then((res) => {
         dispatch(login())
-        {
-          localStorage.setItem("token", res.data.body.token)
-        }
+
+        localStorage.setItem("token", res.data.body.token)
 
         navigate("/profile")
       })
