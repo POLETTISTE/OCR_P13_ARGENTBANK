@@ -24,7 +24,7 @@ export const loginSlice = createSlice({
     updateLastName: (state, action) => {
       state.lastName = action.payload
     },
-    setLightMode: (state, action) => {
+    setLightMode: (state) => {
       state.lightMode = true
     },
   },

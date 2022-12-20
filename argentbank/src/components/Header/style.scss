@@ -1,6 +1,7 @@
 h1 {
   margin-top: 0;
   padding-top: 1em;
+  margin-bottom: 5px;
 }
 
 .header {
@@ -17,15 +18,18 @@ h1 {
 }
 
 .modal {
-  height: 50px;
   color: white;
+  height: 50px;
+  padding-bottom: 30px;
 }
 
-form {
+.modal-form {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
+  width: 50%;
+  margin: auto;
 }
 
 .hide {
@@ -33,22 +37,32 @@ form {
 }
 
 #userFirstName,
-#userLastName {
-  padding: 10px;
-  border: 1px solid #d5dce1;
-  color: black;
-  font-size: 16px;
-  border-radius: 2px;
-  width: 100px;
-  height: 30px;
+#submit-form {
+  margin-right: 14px;
 }
 
-#submit,
+#userFirstName,
+#userLastName {
+  padding: 12px;
+  border: 2px solid #b8c4ce;
+  color: black;
+  font-size: 16px;
+  border-radius: 5px;
+  width: 180px;
+  height: 12px;
+  margin-bottom: 14px;
+  &::placeholder {
+    color: #cad5de;
+  }
+}
+
+#submit-form,
 #cancel {
-  border: 1px solid #6457f6;
+  border: 1.5px solid #6457f6;
   color: #6457f6;
   background-color: white;
   border-radius: 2px;
-  width: 70px;
+  width: 120px;
   height: 30px;
+  font-weight: bold;
 }

@@ -122,7 +122,7 @@ const Header = () => {
         Edit Name
       </button>
       <div className="modal hide">
-        <form>
+        <form className="modal-form">
           <div className="modal-user-infos">
             <label htmlFor="userFirstName">
               <input
@@ -143,7 +143,7 @@ const Header = () => {
           </div>
           <div className="modal-btn">
             <button
-              id="submit"
+              id="submit-form"
               type="submit"
               value="submit"
               onClick={editNameSave}
