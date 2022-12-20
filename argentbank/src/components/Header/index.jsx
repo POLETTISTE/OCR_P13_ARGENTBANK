@@ -49,14 +49,13 @@ const Header = () => {
 
   const editName = (e) => {
     e.preventDefault()
-
     editNameStyle()
   }
 
   const editNameCancel = (e) => {
     e.preventDefault()
-
     removeEditNameStyle()
+
     firstNameField.value = ""
     lastNameField.value = ""
   }
