@@ -3,6 +3,7 @@
 The project is about a new start-up bank, Argent Bank, which is trying to break into the industry and needs help setting up its app.
 
 Phase 1: User Authentication - Creation of a web application allowing customers to log in and manage their accounts and profile.
+
 Phase 2: Transactions - specify API endpoints ("Swagger" file)
 
 ## Technologies
