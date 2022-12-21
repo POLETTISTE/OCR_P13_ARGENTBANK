@@ -28,8 +28,17 @@ mongo --version
 1. Open a terminal window in the cloned project
 1. Run the following commands:
 
+## FRONT-END
 
-#### BACK-END
+```bash
+# Install dependencies
+npm install
+
+# Start app
+npm start
+```
+
+## BACK-END
 
 ```bash
 # Install dependencies
@@ -74,11 +83,4 @@ For some of the dynamic features, like toggling user editing, there is a mock-up
 
 And for the API model that you will be proposing for transactitons, the wireframe can be found in `/designs/wireframes/transactions.png`.
 
-#### FRONT-END
 
-```bash
-# Install dependencies
-npm install
-
-# Start app
-npm start
