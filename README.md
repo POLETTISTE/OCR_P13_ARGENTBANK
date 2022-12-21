@@ -28,15 +28,7 @@ mongo --version
 1. Open a terminal window in the cloned project
 1. Run the following commands:
 
-## FRONT-END
 
-```bash
-# Install dependencies
-npm install
-
-# Start app
-npm start
-```
 
 ## BACK-END
 
@@ -49,6 +41,16 @@ npm run dev:server
 
 # Populate database with two users
 npm run populate-db
+```
+
+## FRONT-END
+
+```bash
+# Install dependencies
+npm install
+
+# Start app
+npm start
 ```
 
 Your server should now be running at http://locahost:3001 and you will now have two users in your MongoDB database!
