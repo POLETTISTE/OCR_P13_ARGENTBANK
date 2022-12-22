@@ -67,8 +67,7 @@ const Header = () => {
 
   const editNameCancel = (e) => {
     e.preventDefault();
-    firstNameField.current.value = firstNameStore;
-    lastNameField.current.value = lastNameStore;
+
     removeEditNameStyle();
   };
 
