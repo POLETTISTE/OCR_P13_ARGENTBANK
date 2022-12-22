@@ -74,6 +74,7 @@ const Header = () => {
   const editNameSave = (e) => {
     e.preventDefault();
 
+    console.log(firstNameField.current.value);
     if (
       firstNameField.current.value === "" ||
       lastNameField.current.value === ""
@@ -103,8 +104,8 @@ const Header = () => {
         }
       )
       .then((res) => {
-        dispatch(updateLastName(lastName));
         dispatch(updateFirstName(firstName));
+        dispatch(updateLastName(lastName));
       })
       .catch((error) => console.log("erreur dans l'API page User", error));
   };
