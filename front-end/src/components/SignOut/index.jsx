@@ -1,5 +1,5 @@
 import "./style.scss";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { logout } from "../../feature/loginSlice";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleUser, faSignOut } from "@fortawesome/free-solid-svg-icons";
@@ -13,19 +13,19 @@ const SignOut = () => {
     dispatch(logout());
   };
   return (
-    <div>
-      <Link to="/profile">
+    <div className="main-nav-items">
+      <NavLink to="/profile">
         <FontAwesomeIcon
           icon={faCircleUser}
           className="main-nav-item-icon icon-user"
         />
         {firstName}
-      </Link>
+      </NavLink>
 
-      <Link onClick={onLogout} to="/login">
+      <NavLink onClick={onLogout} to="/login">
         <FontAwesomeIcon icon={faSignOut} className="main-nav-item-icon" />
-        Sign Out
-      </Link>
+        <span>Sign Out</span>
+      </NavLink>
     </div>
   );
 };
