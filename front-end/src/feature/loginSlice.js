@@ -4,7 +4,6 @@ export const loginSlice = createSlice({
   name: "login",
   initialState: {
     isConnected: false,
-    rememberMe: false,
     firstName: "",
     lastName: "",
   },
@@ -15,11 +14,6 @@ export const loginSlice = createSlice({
     logout: (state) => {
       state.isConnected = false;
     },
-
-    setRememberMe: (state) => {
-      state.rememberMe = true;
-    },
-
     updateFirstName: (state, action) => {
       state.firstName = action.payload;
     },
