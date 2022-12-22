@@ -1,81 +1,86 @@
-import "./style.scss"
-import axios from "axios"
-import { useSelector, useDispatch } from "react-redux"
-import { updateFirstName, updateLastName } from "../../feature/loginSlice"
-import { useState } from "react"
+import "./style.scss";
+import axios from "axios";
+import { useSelector, useDispatch } from "react-redux";
+import { updateFirstName, updateLastName } from "../../feature/loginSlice";
+import { useState } from "react";
 
 const Header = () => {
-  const [firstName, setFirstName] = useState("")
-  const [lastName, setLastName] = useState("")
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
 
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
-  const firstNameStore = useSelector((state) => state.login.firstName)
-  const lastNameStore = useSelector((state) => state.login.lastName)
+  const firstNameStore = useSelector((state) => state.login.firstName);
+  const lastNameStore = useSelector((state) => state.login.lastName);
 
-  const firstNameField = document.getElementById("userFirstName")
-  const lastNameField = document.getElementById("userLastName")
-  const main = document.querySelector("main")
-  const header = document.querySelector(".header")
-  const h1 = document.querySelector("h1")
-  const h1Span = document.querySelector("h1 span")
-  const modal = document.querySelector(".modal")
-  const editButton = document.querySelector(".edit-button")
-  const transactionButton = document.querySelectorAll(".transaction-button")
-  const iconUser = document.querySelector(".icon-user")
+  //   // useRef takes initialValue as param
+  // const fooBarRef = useRef(null);
+
+  // //DOM Usage
+  // <div className="foo" ref={fooBarRef}>Hello</div>
+
+  const firstNameField = document.getElementById("userFirstName");
+  const lastNameField = document.getElementById("userLastName");
+  const main = document.querySelector("main");
+  const header = document.querySelector(".header");
+  const h1 = document.querySelector("h1");
+  const h1Span = document.querySelector("h1 span");
+  const modal = document.querySelector(".modal");
+  const editButton = document.querySelector(".edit-button");
+  const transactionButton = document.querySelectorAll(".transaction-button");
+  const iconUser = document.querySelector(".icon-user");
 
   const editNameStyle = () => {
-    main.classList.add("bg-light")
-    header.classList.add("bg-light")
-    h1.classList.add("bg-light")
-    h1Span.classList.add("hide")
-    modal.classList.remove("hide")
-    editButton.classList.add("hide")
+    main.classList.add("bg-light");
+    header.classList.add("bg-light");
+    h1.classList.add("bg-light");
+    h1Span.classList.add("hide");
+    modal.classList.remove("hide");
+    editButton.classList.add("hide");
     transactionButton.forEach((btn) => {
-      btn.classList.add("transaction-button-edit")
-    })
-    iconUser.classList.add("icon-user-update-infos")
-  }
+      btn.classList.add("transaction-button-edit");
+    });
+    iconUser.classList.add("icon-user-update-infos");
+  };
 
   const removeEditNameStyle = () => {
-    main.classList.remove("bg-light")
-    header.classList.remove("bg-light")
-    h1.classList.remove("bg-light")
-    h1Span.classList.remove("hide")
-    modal.classList.add("hide")
-    editButton.classList.remove("hide")
+    main.classList.remove("bg-light");
+    header.classList.remove("bg-light");
+    h1.classList.remove("bg-light");
+    h1Span.classList.remove("hide");
+    modal.classList.add("hide");
+    editButton.classList.remove("hide");
     transactionButton.forEach((btn) => {
-      btn.classList.remove("transaction-button-edit")
-    })
-    iconUser.classList.remove("icon-user-update-infos")
-
-  }
+      btn.classList.remove("transaction-button-edit");
+    });
+    iconUser.classList.remove("icon-user-update-infos");
+  };
 
   const editName = (e) => {
-    e.preventDefault()
-    editNameStyle()
-  }
+    e.preventDefault();
+    editNameStyle();
+  };
 
   const editNameCancel = (e) => {
-    e.preventDefault()
-    removeEditNameStyle()
+    e.preventDefault();
+    removeEditNameStyle();
 
-    firstNameField.value = ""
-    lastNameField.value = ""
-  }
+    firstNameField.value = "";
+    lastNameField.value = "";
+  };
 
   const editNameSave = (e) => {
-    e.preventDefault()
+    e.preventDefault();
 
     if ((firstNameField.value && lastNameField.value) === "") {
-      alert("Firstname and name fields must be filled out")
-      return false
+      alert("Firstname and name fields must be filled out");
+      return false;
     }
-    const token = window.localStorage.getItem("token")
+    const token = window.localStorage.getItem("token");
 
-    removeEditNameStyle()
-    firstNameField.value = ""
-    lastNameField.value = ""
+    removeEditNameStyle();
+    firstNameField.value = "";
+    lastNameField.value = "";
 
     axios
       .put(
@@ -93,11 +98,11 @@ const Header = () => {
         }
       )
       .then((res) => {
-        dispatch(updateLastName(lastName))
-        dispatch(updateFirstName(firstName))
+        dispatch(updateLastName(lastName));
+        dispatch(updateFirstName(firstName));
       })
-      .catch((error) => console.log("erreur dans l'API page User", error))
-  }
+      .catch((error) => console.log("erreur dans l'API page User", error));
+  };
 
   return (
     <div className="header">
@@ -133,23 +138,21 @@ const Header = () => {
               id="submit-form"
               type="submit"
               value="submit"
-              onClick={editNameSave}
-            >
+              onClick={editNameSave}>
               Save
             </button>
             <button
               id="cancel"
               type="submit"
               value="cancel"
-              onClick={editNameCancel}
-            >
+              onClick={editNameCancel}>
               Cancel
             </button>
           </div>
         </form>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Header
+export default Header;
