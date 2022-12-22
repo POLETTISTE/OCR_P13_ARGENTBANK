@@ -120,7 +120,7 @@ const Header = () => {
                 required
                 id="userFirstName"
                 ref={firstNameField}
-                placeholder={firstNameStore}
+                defaultValue={firstNameStore}
                 onChange={(e) => setFirstName(e.target.value)}
               />
             </label>
@@ -129,7 +129,7 @@ const Header = () => {
                 required
                 id="userLastName"
                 ref={lastNameField}
-                placeholder={lastNameStore}
+                defaultValue={lastNameStore}
                 onChange={(e) => setLastName(e.target.value)}
               />
             </label>
