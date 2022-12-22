@@ -81,10 +81,6 @@ const Header = () => {
 
     removeEditNameStyle();
 
-    firstNameField.value = { firstName };
-    console.log({ firstName });
-    lastNameField.value = { lastName };
-
     axios
       .put(
         "http://localhost:3001/api/v1/user/profile",
@@ -124,8 +120,8 @@ const Header = () => {
                 required
                 id="userFirstName"
                 ref={firstNameField}
+                placeholder={firstNameStore}
                 onChange={(e) => setFirstName(e.target.value)}
-                value={firstNameStore}
               />
             </label>
             <label htmlFor="userLastName">
@@ -133,8 +129,8 @@ const Header = () => {
                 required
                 id="userLastName"
                 ref={lastNameField}
+                placeholder={lastNameStore}
                 onChange={(e) => setLastName(e.target.value)}
-                value={lastNameStore}
               />
             </label>
           </div>
