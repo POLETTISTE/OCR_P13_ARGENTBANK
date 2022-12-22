@@ -2,7 +2,7 @@ import "./style.scss";
 import axios from "axios";
 import { useSelector, useDispatch } from "react-redux";
 import { updateFirstName, updateLastName } from "../../feature/loginSlice";
-import { useState } from "react";
+import { useState, useRef } from "react";
 
 const Header = () => {
   const [firstName, setFirstName] = useState("");
@@ -13,18 +13,20 @@ const Header = () => {
   const firstNameStore = useSelector((state) => state.login.firstName);
   const lastNameStore = useSelector((state) => state.login.lastName);
 
-  const firstNameField = document.getElementById("userFirstName");
-  const lastNameField = document.getElementById("userLastName");
-  const main = document.querySelector("main");
-  const header = document.querySelector(".header");
-  const h1 = document.querySelector("h1");
-  const h1Span = document.querySelector("h1 span");
-  const modal = document.querySelector(".modal");
-  const editButton = document.querySelector(".edit-button");
-  const transactionButton = document.querySelectorAll(".transaction-button");
-  const iconUser = document.querySelector(".icon-user");
+  // const firstNameField = document.getElementById("userFirstName");
+  const firstNameField = useRef(null);
+  // const lastNameField = document.getElementById("userLastName");
+  const lastNameField = useRef(null);
 
   const editNameStyle = () => {
+    const main = document.querySelector("main");
+    const header = document.querySelector(".header");
+    const h1 = document.querySelector("h1");
+    const h1Span = document.querySelector("h1 span");
+    const modal = document.querySelector(".modal");
+    const editButton = document.querySelector(".edit-button");
+    const transactionButton = document.querySelectorAll(".transaction-button");
+    const iconUser = document.querySelector(".icon-user");
     main.classList.add("bg-light");
     header.classList.add("bg-light");
     h1.classList.add("bg-light");
@@ -38,6 +40,14 @@ const Header = () => {
   };
 
   const removeEditNameStyle = () => {
+    const main = document.querySelector("main");
+    const header = document.querySelector(".header");
+    const h1 = document.querySelector("h1");
+    const h1Span = document.querySelector("h1 span");
+    const modal = document.querySelector(".modal");
+    const editButton = document.querySelector(".edit-button");
+    const transactionButton = document.querySelectorAll(".transaction-button");
+    const iconUser = document.querySelector(".icon-user");
     main.classList.remove("bg-light");
     header.classList.remove("bg-light");
     h1.classList.remove("bg-light");
@@ -58,9 +68,6 @@ const Header = () => {
   const editNameCancel = (e) => {
     e.preventDefault();
     removeEditNameStyle();
-
-    firstNameField.value = "";
-    lastNameField.value = "";
   };
 
   const editNameSave = (e) => {
@@ -73,8 +80,10 @@ const Header = () => {
     const token = window.localStorage.getItem("token");
 
     removeEditNameStyle();
-    firstNameField.value = "";
-    lastNameField.value = "";
+
+    firstNameField.value = { firstName };
+    console.log({ firstName });
+    lastNameField.value = { lastName };
 
     axios
       .put(
@@ -114,16 +123,18 @@ const Header = () => {
               <input
                 required
                 id="userFirstName"
+                ref={firstNameField}
                 onChange={(e) => setFirstName(e.target.value)}
-                placeholder={firstNameStore}
+                value={firstNameStore}
               />
             </label>
             <label htmlFor="userLastName">
               <input
                 required
                 id="userLastName"
+                ref={lastNameField}
                 onChange={(e) => setLastName(e.target.value)}
-                placeholder={lastNameStore}
+                value={lastNameStore}
               />
             </label>
           </div>
