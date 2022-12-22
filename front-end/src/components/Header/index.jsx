@@ -13,12 +13,6 @@ const Header = () => {
   const firstNameStore = useSelector((state) => state.login.firstName);
   const lastNameStore = useSelector((state) => state.login.lastName);
 
-  //   // useRef takes initialValue as param
-  // const fooBarRef = useRef(null);
-
-  // //DOM Usage
-  // <div className="foo" ref={fooBarRef}>Hello</div>
-
   const firstNameField = document.getElementById("userFirstName");
   const lastNameField = document.getElementById("userLastName");
   const main = document.querySelector("main");
@@ -108,7 +102,7 @@ const Header = () => {
     <div className="header">
       <h1>
         Welcome back
-        <br /> <span>{firstNameStore}</span>
+        <br /> <span>{firstNameStore + " " + lastNameStore}</span>
       </h1>
       <button className="edit-button" onClick={editName}>
         Edit Name
