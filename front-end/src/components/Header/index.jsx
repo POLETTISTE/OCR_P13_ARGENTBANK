@@ -79,8 +79,10 @@ const Header = () => {
       lastNameField.current.value === ""
     ) {
       alert("Firstname and name fields must be filled out");
+
       return false;
     }
+
     const token = window.localStorage.getItem("token");
 
     removeEditNameStyle();
@@ -124,7 +126,7 @@ const Header = () => {
                 required
                 id="userFirstName"
                 ref={firstNameField}
-                defaultValue={firstNameStore}
+                placeholder={firstNameStore}
                 onChange={(e) => setFirstName(e.target.value)}
               />
             </label>
@@ -133,7 +135,7 @@ const Header = () => {
                 required
                 id="userLastName"
                 ref={lastNameField}
-                defaultValue={lastNameStore}
+                placeholder={lastNameStore}
                 onChange={(e) => setLastName(e.target.value)}
               />
             </label>
