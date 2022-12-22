@@ -73,7 +73,10 @@ const Header = () => {
   const editNameSave = (e) => {
     e.preventDefault();
 
-    if ((firstNameField.value && lastNameField.value) === "") {
+    if (
+      firstNameField.current.value === "" &&
+      lastNameField.current.value === ""
+    ) {
       alert("Firstname and name fields must be filled out");
       return false;
     }
