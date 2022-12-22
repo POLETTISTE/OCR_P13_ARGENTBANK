@@ -22,6 +22,7 @@ const Header = () => {
   const modal = document.querySelector(".modal")
   const editButton = document.querySelector(".edit-button")
   const transactionButton = document.querySelectorAll(".transaction-button")
+  const iconUser = document.querySelector(".icon-user")
 
   const editNameStyle = () => {
     main.classList.add("bg-light")
@@ -33,6 +34,7 @@ const Header = () => {
     transactionButton.forEach((btn) => {
       btn.classList.add("transaction-button-edit")
     })
+    iconUser.classList.add("icon-user-update-infos")
   }
 
   const removeEditNameStyle = () => {
@@ -45,6 +47,8 @@ const Header = () => {
     transactionButton.forEach((btn) => {
       btn.classList.remove("transaction-button-edit")
     })
+    iconUser.classList.remove("icon-user-update-infos")
+
   }
 
   const editName = (e) => {
