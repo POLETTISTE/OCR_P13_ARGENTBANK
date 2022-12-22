@@ -13,11 +13,6 @@ const Header = () => {
   const firstNameStore = useSelector((state) => state.login.firstName);
   const lastNameStore = useSelector((state) => state.login.lastName);
 
-  // const firstNameField = document.getElementById("userFirstName");
-  const firstNameField = useRef(null);
-  // const lastNameField = document.getElementById("userLastName");
-  const lastNameField = useRef(null);
-
   const editNameStyle = () => {
     const main = document.querySelector("main");
     const header = document.querySelector(".header");
@@ -67,18 +62,14 @@ const Header = () => {
 
   const editNameCancel = (e) => {
     e.preventDefault();
-
     removeEditNameStyle();
   };
 
   const editNameSave = (e) => {
     e.preventDefault();
 
-    console.log(firstNameField.current.value);
-    if (
-      firstNameField.current.value === "" ||
-      lastNameField.current.value === ""
-    ) {
+    console.log(firstName);
+    if (firstName === "" || lastName === "") {
       alert("Firstname and name fields must be filled out");
 
       return false;
@@ -126,7 +117,6 @@ const Header = () => {
               <input
                 required
                 id="userFirstName"
-                ref={firstNameField}
                 placeholder={firstNameStore}
                 onChange={(e) => setFirstName(e.target.value)}
               />
@@ -135,7 +125,6 @@ const Header = () => {
               <input
                 required
                 id="userLastName"
-                ref={lastNameField}
                 placeholder={lastNameStore}
                 onChange={(e) => setLastName(e.target.value)}
               />
