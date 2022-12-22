@@ -69,9 +69,9 @@ npm install
 npm start
 ```
 
-Your server should now be running at http://locahost:3001 and you will now have two users in your MongoDB database!
+Your server should now be running at http://localhost:3001 and you will now have two users in your MongoDB database!
 
-Your App starts at http://locahost:3000
+Your App starts at http://localhost:3000
 
 ## Populated Database Data
 
