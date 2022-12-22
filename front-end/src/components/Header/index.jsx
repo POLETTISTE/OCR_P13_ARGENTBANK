@@ -67,6 +67,8 @@ const Header = () => {
 
   const editNameCancel = (e) => {
     e.preventDefault();
+    firstNameField.current.value = firstNameStore;
+    lastNameField.current.value = lastNameStore;
     removeEditNameStyle();
   };
 
@@ -74,7 +76,7 @@ const Header = () => {
     e.preventDefault();
 
     if (
-      firstNameField.current.value === "" &&
+      firstNameField.current.value === "" ||
       lastNameField.current.value === ""
     ) {
       alert("Firstname and name fields must be filled out");
