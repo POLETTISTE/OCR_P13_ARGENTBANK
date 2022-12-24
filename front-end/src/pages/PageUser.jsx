@@ -3,11 +3,12 @@ import Header from "../components/Header";
 import axios from "axios";
 
 import { useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { updateFirstName, updateLastName } from "../feature/loginSlice";
 
 const PageUser = () => {
   const dispatch = useDispatch();
+  const editedNameStore = useSelector((state) => state.login.editedName);
 
   useEffect(() => {
     const token = window.localStorage.getItem("token");
@@ -31,7 +32,7 @@ const PageUser = () => {
   }, [dispatch]);
 
   return (
-    <main className="main bg-dark">
+    <main className={editedNameStore ? "main bg-light" : "main bg-dark"}>
       <Header />
       <Account />
     </main>

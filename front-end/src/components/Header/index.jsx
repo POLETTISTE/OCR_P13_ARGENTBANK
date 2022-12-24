@@ -1,8 +1,13 @@
 import "./style.scss";
 import axios from "axios";
 import { useSelector, useDispatch } from "react-redux";
-import { updateFirstName, updateLastName } from "../../feature/loginSlice";
-import { useState, useRef } from "react";
+import {
+  updateFirstName,
+  updateLastName,
+  editedNameTrue,
+  editedNameFalse,
+} from "../../feature/loginSlice";
+import { useState } from "react";
 
 const Header = () => {
   const [firstName, setFirstName] = useState("");
@@ -12,57 +17,28 @@ const Header = () => {
 
   const firstNameStore = useSelector((state) => state.login.firstName);
   const lastNameStore = useSelector((state) => state.login.lastName);
+  const editedNameStore = useSelector((state) => state.login.editedName);
 
   const editNameStyle = () => {
-    const main = document.querySelector("main");
-    const header = document.querySelector(".header");
-    const h1 = document.querySelector("h1");
-    const h1Span = document.querySelector("h1 span");
-    const modal = document.querySelector(".modal");
-    const editButton = document.querySelector(".edit-button");
-    const transactionButton = document.querySelectorAll(".transaction-button");
     const iconUser = document.querySelector(".icon-user");
-    main.classList.add("bg-light");
-    header.classList.add("bg-light");
-    h1.classList.add("bg-light");
-    h1Span.classList.add("hide");
-    modal.classList.remove("hide");
-    editButton.classList.add("hide");
-    transactionButton.forEach((btn) => {
-      btn.classList.add("transaction-button-edit");
-    });
+
     iconUser.classList.add("icon-user-update-infos");
   };
 
   const removeEditNameStyle = () => {
-    const main = document.querySelector("main");
-    const header = document.querySelector(".header");
-    const h1 = document.querySelector("h1");
-    const h1Span = document.querySelector("h1 span");
-    const modal = document.querySelector(".modal");
-    const editButton = document.querySelector(".edit-button");
-    const transactionButton = document.querySelectorAll(".transaction-button");
     const iconUser = document.querySelector(".icon-user");
-    main.classList.remove("bg-light");
-    header.classList.remove("bg-light");
-    h1.classList.remove("bg-light");
-    h1Span.classList.remove("hide");
-    modal.classList.add("hide");
-    editButton.classList.remove("hide");
-    transactionButton.forEach((btn) => {
-      btn.classList.remove("transaction-button-edit");
-    });
+
     iconUser.classList.remove("icon-user-update-infos");
   };
 
   const editName = (e) => {
     e.preventDefault();
-    editNameStyle();
+    dispatch(editedNameTrue(true));
   };
 
   const editNameCancel = (e) => {
     e.preventDefault();
-    removeEditNameStyle();
+    dispatch(editedNameFalse(false));
   };
 
   const editNameSave = (e) => {
@@ -75,6 +51,7 @@ const Header = () => {
     }
 
     const token = window.localStorage.getItem("token");
+    dispatch(editedNameFalse(false));
 
     removeEditNameStyle();
 
@@ -101,15 +78,20 @@ const Header = () => {
   };
 
   return (
-    <div className="header">
-      <h1>
+    <div className={editedNameStore ? "header-black bg-light" : "header"}>
+      <h1 className={editedNameStore ? "bg-light" : ""}>
         Welcome back
-        <br /> <span>{firstNameStore + " " + lastNameStore}</span>
+        <br />
+        <span className={editedNameStore ? "hide" : ""}>
+          {firstNameStore + " " + lastNameStore}
+        </span>
       </h1>
-      <button className="edit-button" onClick={editName}>
+      <button
+        className={editedNameStore ? "edit-button hide" : "edit-button "}
+        onClick={editName}>
         Edit Name
       </button>
-      <div className="modal hide">
+      <div className={editedNameStore ? "modal " : "modal hide "}>
         <form className="modal-form">
           <div className="modal-user-infos">
             <label htmlFor="userFirstName">

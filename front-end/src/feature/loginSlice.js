@@ -6,6 +6,7 @@ export const loginSlice = createSlice({
     isConnected: false,
     firstName: "",
     lastName: "",
+    editedName: false,
   },
   reducers: {
     login: (state) => {
@@ -20,10 +21,23 @@ export const loginSlice = createSlice({
     updateLastName: (state, action) => {
       state.lastName = action.payload;
     },
+    editedNameTrue: (state) => {
+      state.editedName = true;
+    },
+    editedNameFalse: (state) => {
+      state.editedName = false;
+    },
   },
 });
 
-export const { login, logout, setRememberMe, updateFirstName, updateLastName } =
-  loginSlice.actions;
+export const {
+  login,
+  logout,
+  setRememberMe,
+  updateFirstName,
+  updateLastName,
+  editedNameTrue,
+  editedNameFalse,
+} = loginSlice.actions;
 
 export default loginSlice.reducer;

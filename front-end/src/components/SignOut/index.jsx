@@ -7,6 +7,8 @@ import { useSelector, useDispatch } from "react-redux";
 
 const SignOut = () => {
   const firstName = useSelector((state) => state.login.firstName);
+  const editedNameStore = useSelector((state) => state.login.editedName);
+
   const dispatch = useDispatch();
 
   const onLogout = () => {
@@ -17,7 +19,11 @@ const SignOut = () => {
       <NavLink to="/profile">
         <FontAwesomeIcon
           icon={faCircleUser}
-          className="main-nav-item-icon icon-user"
+          className={
+            editedNameStore
+              ? "main-nav-item-icon icon-user icon-user-update-infos"
+              : "main-nav-item-icon icon-user"
+          }
         />
         {firstName}
       </NavLink>

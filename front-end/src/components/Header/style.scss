@@ -3,10 +3,12 @@ h1 {
   padding-top: 1em;
   margin-bottom: 5px;
 }
-
 .header {
   color: #fff;
   margin-bottom: 2rem;
+  &-black {
+    color: black;
+  }
 }
 
 .edit-button {
