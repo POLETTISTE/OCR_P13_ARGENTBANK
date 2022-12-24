@@ -1,4 +1,5 @@
 import "./style.scss";
+import { useState } from "react";
 import axios from "axios";
 import { useSelector, useDispatch } from "react-redux";
 import {
@@ -7,7 +8,6 @@ import {
   editedNameTrue,
   editedNameFalse,
 } from "../../feature/loginSlice";
-import { useState } from "react";
 
 const Header = () => {
   const [firstName, setFirstName] = useState("");
@@ -19,26 +19,14 @@ const Header = () => {
   const lastNameStore = useSelector((state) => state.login.lastName);
   const editedNameStore = useSelector((state) => state.login.editedName);
 
-  const editNameStyle = () => {
-    const iconUser = document.querySelector(".icon-user");
-
-    iconUser.classList.add("icon-user-update-infos");
-  };
-
-  const removeEditNameStyle = () => {
-    const iconUser = document.querySelector(".icon-user");
-
-    iconUser.classList.remove("icon-user-update-infos");
-  };
-
   const editName = (e) => {
     e.preventDefault();
-    dispatch(editedNameTrue(true));
+    dispatch(editedNameTrue());
   };
 
   const editNameCancel = (e) => {
     e.preventDefault();
-    dispatch(editedNameFalse(false));
+    dispatch(editedNameFalse());
   };
 
   const editNameSave = (e) => {
@@ -49,11 +37,9 @@ const Header = () => {
 
       return false;
     }
+    dispatch(editedNameFalse());
 
     const token = window.localStorage.getItem("token");
-    dispatch(editedNameFalse(false));
-
-    removeEditNameStyle();
 
     axios
       .put(

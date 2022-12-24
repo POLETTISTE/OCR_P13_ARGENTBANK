@@ -11,7 +11,7 @@ const Nav = () => {
   const dispatch = useDispatch();
 
   const resetEditState = () => {
-    dispatch(editedNameFalse(false));
+    dispatch(editedNameFalse());
   };
   return (
     <nav className="main-nav">
